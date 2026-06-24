@@ -46,6 +46,17 @@ section {
     padding: 40px 20px;
 }
 
+.label {
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+}
+
 h1,
 h2,
 h3 {
@@ -63,11 +74,17 @@ h1 {
 }
 
 .tagline {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.8rem;
+    font-weight: 600;
     line-height: 1.4;
     opacity: 0.9;
     color: var(--text-primary);
+}
+
+.description {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    max-width: 500px;
 }
 
 .description {
@@ -106,4 +123,85 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+    margin: 24px auto;
+}
+
+.option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 20px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.option-btn {
+    max-width: 500px;
+}
+
+.option-btn:hover {
+    border-color: var(--accent);
+}
+
+.option-btn.selected {
+    border-color: var(--accent);
+    background-color: var(--accent-dim);
+}
+
+#assessment .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 640px;
+}
+
+.question-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#progress {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.text-input {
+    width: 100%;
+    max-width: 500px;
+    min-height: 120px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 14px 16px;
+    border-radius: 8px;
+    resize: vertical;
+    margin-top: 16px;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--accent);
 }
