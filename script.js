@@ -169,16 +169,24 @@ function renderQuestion() {
     const optionButtons = questionContainer.querySelectorAll('.option-btn');
 
     optionButtons.forEach((btn, index) => {
+        if (q.options[index] === answers[q.id]) {
+    btn.classList.add('selected');
+  }
+
       btn.addEventListener('click', () => {
         selectOption(btn, q.id, q.options[index]);
       });
     });
   } else if (q.type === 'text') {
     const textArea = document.getElementById('text-answer');
+if (answers[q.id] !== undefined) {
+  textArea.value = answers[q.id];
+}
 
-    textArea.addEventListener('change', () => {
-      answers[q.id] = textArea.value;
-    });
+   textArea.addEventListener('change', () => {
+  answers[q.id] = textArea.value;
+  console.log(answers);
+});
   }
 
   backBtn.style.display = currentQuestion === 0 ? 'none' : 'inline-block';
