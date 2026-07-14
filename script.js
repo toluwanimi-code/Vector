@@ -183,7 +183,7 @@ if (answers[q.id] !== undefined) {
   textArea.value = answers[q.id];
 }
 
-   textArea.addEventListener('change', () => {
+textArea.addEventListener('input', () => {
   answers[q.id] = textArea.value;
   console.log(answers);
 });
@@ -239,30 +239,19 @@ async function getDiagnosis() {
   const prompt = buildPrompt(answers);
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${CONFIG.API_KEY}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text: prompt }]
-            }
-          ]
-        })
-      }
-    );
+    const response = await fetch('/.netlify/functions/gemini', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ prompt })
+    });
 
     const data = await response.json();
 
     if (!response.ok) {
       console.error('API error:', data);
-      throw new Error(
-        data.error?.message || `Request failed with status ${response.status}`
-      );
+      throw new Error(data.error || `Request failed with status ${response.status}`);
     }
 
     const text = data.candidates[0].content.parts[0].text;
